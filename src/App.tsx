@@ -1,27 +1,35 @@
+import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
-import logo from './assets/images/logo.svg';
+import { MainLayout } from './layouts/MainLayout';
+import { auth } from './lib/firebase';
+import { setLoading, setUser } from './redux/features/user/userSlice';
+import { useAppDispatch } from './redux/hooks';
 
-const textFontSizes = [16, 18, 24, 30];
-
-function App(): JSX.Element {
+export const App = () => {
+  const dispatch = useAppDispatch();
   const [count, setCount] = useState(0);
-
-  // anError;
 
   useEffect(() => {
     console.log(count);
   }, []);
 
+  useEffect(() => {
+    dispatch(setLoading(true));
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.email) {
+        dispatch(setUser(user.email));
+        dispatch(setLoading(false));
+      } else {
+        dispatch(setLoading(false));
+      }
+    });
+  }, [dispatch]);
+
   return (
-    <div className="">
-      <img src={logo} alt="logo" className="w-80 h-80 " />
-      <h2 className="text-xl text-blue-600">red ress</h2>
-      <button type="button" onClick={() => setCount(count + 1)}>
-        click me {count}
-      </button>
+    <div>
+      {/* <Toaster /> */}
+      <MainLayout />
     </div>
   );
-}
-
-export default App;
+};
