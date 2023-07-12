@@ -16,7 +16,7 @@ function App(): JSX.Element {
   return (
     <div className="">
       <img src={logo} alt="logo" className="w-80 h-80 " />
-      <h2 className="text-xl text-red-500">red ress</h2>
+      <h2 className="text-xl text-blue-600">red ress</h2>
       <button type="button" onClick={() => setCount(count + 1)}>
         click me {count}
       </button>

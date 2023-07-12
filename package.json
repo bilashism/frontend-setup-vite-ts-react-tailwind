@@ -18,8 +18,13 @@
     "cz": "cz"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "clsx": "^1.2.1",
+    "firebase": "^10.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
+    "tailwind-merge": "^1.13.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.8",
@@ -30,6 +35,7 @@
     "@types/jest": "^29.5.3",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/react-redux": "^7.1.25",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
