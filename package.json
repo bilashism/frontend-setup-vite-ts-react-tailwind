@@ -9,13 +9,23 @@
     "serve": "vite preview",
     "lint": "eslint src --ext .tsx --ext .ts",
     "lint:fix": "pnpm run lint --fix",
-    "format": "prettier --config ./.prettierrc -w src/**/*.{tsx,ts,css,html,json} && pnpm run lint:fix && git update-index --again",
+    "format": "prettier --config ./.prettierrc -w src/**/*.{js,jsx,ts,tsx,css,html,json} && pnpm run lint:fix && git update-index",
     "pretest": "pnpm run lint:fix",
     "test": "jest --colors --passWithNoTests",
     "posttest": "npx http-server coverage/lcov-report",
     "test:watch": "pnpm run test --collectCoverage=false --watch",
     "prepare": "husky install",
     "cz": "cz"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint"
+    ],
+    "*.{json,css}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -56,6 +66,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
+    "lint-staged": "^13.2.3",
     "postcss": "^8.4.25",
     "prettier": "^3.0.0",
     "rollup": "^3.26.2",
