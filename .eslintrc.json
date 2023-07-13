@@ -58,6 +58,8 @@
     //     "code": 80
     //   }
     // ],
+    "react/no-unused-prop-types": "off",
+    "react/destructuring-assignment": "off",
     "import/extensions": [
       "error",
       "never",
